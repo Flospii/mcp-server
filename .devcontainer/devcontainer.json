@@ -4,7 +4,9 @@
   },
   "customizations": {
     "vscode": {
-      "extensions": []
+      "extensions": [
+        "esbenp.prettier-vscode" // Prettier for JS/TS/JSON/etc.
+      ]
     }
   }
 }
