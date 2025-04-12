@@ -22,12 +22,25 @@ const mcpServer = new McpServer(
 
 // Define a simple tool as an example.
 mcpServer.tool(
-  "echo",
-  "This tool echoes back the message you send.",
-  { message: z.string() },
-  async ({ message }) => ({
-    content: [{ type: "text", text: `Echo: ${message}` }],
-  })
+  "get-weather",
+  "tool to get the current weather of a city",
+  { city: z.string() },
+  async ({ city }) => {
+    // Mocking the weather data
+    const weatherData = {
+      city,
+      temperature: 25,
+      condition: "Sunny",
+    };
+    return {
+      content: [
+        {
+          type: "text",
+          text: `The current weather in ${weatherData.city} is ${weatherData.temperature}°C and ${weatherData.condition}.`,
+        },
+      ],
+    };
+  }
 );
 
 // Optionally add a resource.
