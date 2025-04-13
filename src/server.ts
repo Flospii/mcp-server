@@ -20,7 +20,6 @@ const mcpServer = new McpServer(
   }
 );
 
-// Define a simple tool as an example.
 mcpServer.tool(
   "get-weather",
   "tool to get the current weather of a city",
@@ -37,6 +36,27 @@ mcpServer.tool(
         {
           type: "text",
           text: `The current weather in ${weatherData.city} is ${weatherData.temperature}°C and ${weatherData.condition}.`,
+        },
+      ],
+    };
+  }
+);
+
+mcpServer.tool(
+  "get-time",
+  "tool to get the current time in a city",
+  { city: z.string() },
+  async ({ city }) => {
+    // Mocking the time data
+    const timeData = {
+      city,
+      time: new Date().toLocaleTimeString(),
+    };
+    return {
+      content: [
+        {
+          type: "text",
+          text: `The current time in ${timeData.city} is ${timeData.time}.`,
         },
       ],
     };
