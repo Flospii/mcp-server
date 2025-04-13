@@ -50,7 +50,7 @@ mcpServer.tool(
     // Mocking the time data
     const timeData = {
       city,
-      time: new Date().toLocaleTimeString(),
+      time: "12:00 PM",
     };
     return {
       content: [
